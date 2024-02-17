@@ -1,5 +1,24 @@
-let operator, numberA, numberB;
+let operator, number, numberA, numberB;
 let numbers = [];
+let i = 0;
+
+const container = document.querySelector('.container');
+const display = document.querySelector('.display');
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        number = button.id;
+        populateDisplay(number);
+    });
+});
+
+function populateDisplay(number){
+    numbers[i] = number;
+    i++;
+    display.textContent = numbers;
+}
 
 function operate(operator, numbers) {
     if (operator === '+'){
