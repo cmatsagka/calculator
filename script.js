@@ -17,7 +17,7 @@ buttons.forEach((button) => {
 function populateDisplay(number){
     numbers[i] = number;
     i++;
-    display.textContent = numbers;
+    display.textContent = numbers.join(' ', '-');
 }
 
 function operate(operator, numbers) {
