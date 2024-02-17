@@ -1,6 +1,11 @@
-let operator, number, numberA, numberB;
+let operator, number, numberB;
+let numberA = 0;
 let numbers = [];
 let i = 0;
+let j = 0;
+let buttonPressed;
+const operators = ['+', '-', '*', '/', '^'];
+const isOperator = (e) => operators.includes(e);
 
 const container = document.querySelector('.container');
 const display = document.querySelector('.display');
@@ -9,48 +14,61 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        number = button.id;
-        populateDisplay(number);
+        buttonPressed = button.id;
+
+        if (isOperator(buttonPressed)){
+            operator = buttonPressed;
+            populateDisplay(buttonPressed);
+        }else{
+            numberA += Number(buttonPressed);
+            console.log("A = ", numberA);
+
+            numberB = Number(numberA);
+            console.log("B = ", numberB);
+            // numberB = numberA.join('');
+            populateDisplay(buttonPressed);
+        }
+        operate(operator, Number(numberA), numberB);
     });
 });
 
 function populateDisplay(number){
     numbers[i] = number;
     i++;
-    display.textContent = numbers.join(' ', '-');
+    display.textContent = numbers.join(' ');
 }
 
-function operate(operator, numbers) {
+function operate(operator, numberA, numberB) {
     if (operator === '+'){
-        return add(numbers);
+        return add(numberA, numberB);
     }else if(operator === '-'){
-        return subtract(numbers);
+        return subtract(numberA, numberB);
     }else if(operator === '*'){
-        return multiply(numbers);
+        return multiply(numberA, numberB);
     }else if(operator === '/'){
-        return divide(numbers);
+        return divide(numberA, numberB);
     }else if(operator === '^'){
-        return divide(numbers);
+        return divide(numberA, numberB);
     }
 }
 
-function add(arr) {
-    return arr.reduce((product, current) => product + current);
+function add(a, b) {
+    return a + b;
 };
 
-function subtract(arr) {
-    return arr.reduce((product, current) => product - current);
+function subtract(a, b) {
+    return a - b;
 };
 
-function multiply(arr) {
-    return arr.reduce((product, current) => product * current);
+function multiply(a, b) {
+    return a * b;
 };
 
-function divide(arr) {
-    return arr.reduce((product, current) => product / current);
+function divide(a, b) {
+    return a / b;
 };
 
-function power(arr) {
-    return arr.reduce((product, current) => product ** current);
+function power(a, b) {
+    return a ** b;
 };
 
