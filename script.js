@@ -1,5 +1,6 @@
-let operator, number, numberB;
+let operator, number;
 let numberA = 0;
+let sum = 0;
 let numbers = [];
 let i = 0;
 let j = 0;
@@ -18,24 +19,24 @@ buttons.forEach((button) => {
 
         if (isOperator(buttonPressed)){
             operator = buttonPressed;
-            populateDisplay(buttonPressed);
-        }else{
-            numberA += Number(buttonPressed);
-            console.log("A = ", numberA);
+            
+            console.log(operator);
 
-            numberB = Number(numberA);
-            console.log("B = ", numberB);
-            // numberB = numberA.join('');
-            populateDisplay(buttonPressed);
+            sum = operate(operator, +numberA, sum);
+            numberA = '';
+        }else{
+            numberA += buttonPressed;
+            console.log("A = ", +numberA);
         }
-        operate(operator, Number(numberA), numberB);
+        populateDisplay(buttonPressed);
+        console.log("sum = ", sum);
     });
 });
 
 function populateDisplay(number){
     numbers[i] = number;
     i++;
-    display.textContent = numbers.join(' ');
+    display.textContent = numbers.join('');
 }
 
 function operate(operator, numberA, numberB) {
