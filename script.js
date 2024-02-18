@@ -1,42 +1,49 @@
-let operator, number;
-let numberA = 0;
-let sum = 0;
-let numbers = [];
+let operatorN, numberFirst, numberSecond;
+let displayValue;
+let keys = [];
 let i = 0;
-let j = 0;
 let buttonPressed;
+
 const operators = ['+', '-', '*', '/', '^'];
 const isOperator = (e) => operators.includes(e);
 
-const container = document.querySelector('.container');
 const display = document.querySelector('.display');
-
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         buttonPressed = button.id;
-
-        if (isOperator(buttonPressed)){
-            operator = buttonPressed;
-            
-            console.log(operator);
-
-            sum = operate(operator, +numberA, sum);
-            numberA = '';
-        }else{
-            numberA += buttonPressed;
-            console.log("A = ", +numberA);
-        }
+        console.log(buttonPressed);
         populateDisplay(buttonPressed);
-        console.log("sum = ", sum);
     });
 });
 
-function populateDisplay(number){
-    numbers[i] = number;
+displayValue = populateDisplay();
+
+function populateDisplay(key){
+    keys[i] = key;
     i++;
-    display.textContent = numbers.join('');
+
+    if (isOperator(key)){
+        display.textContent += key + ' ';
+        displayValue = display.textContent;
+    }else if (key === '='){
+        display.textContent += ' ' + '=';
+        displayValue = +display.textContent;
+    }else if (key === 'clear'){
+        keys = [];
+        i = 0;
+        display.textContent = 0;
+        displayValue = 0;
+    }else if (key === 'x'){
+        display.textContent = keys.pop();
+        i = i - 2;
+        displayValue = +display.textContent;
+    }else{
+        display.textContent = keys.join('') + ' ';
+        displayValue = +display.textContent;
+    }
+    return displayValue;
 }
 
 function operate(operator, numberA, numberB) {
@@ -49,7 +56,7 @@ function operate(operator, numberA, numberB) {
     }else if(operator === '/'){
         return divide(numberA, numberB);
     }else if(operator === '^'){
-        return divide(numberA, numberB);
+        return power(numberA, numberB);
     }
 }
 
@@ -72,4 +79,3 @@ function divide(a, b) {
 function power(a, b) {
     return a ** b;
 };
-
