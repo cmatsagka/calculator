@@ -3,31 +3,39 @@ let displayValue;
 let keys = [];
 let i = 0;
 let buttonPressed;
+let len = 0;
+let sumValue = 0;
 
-const operators = ['+', '-', '*', '/', '^'];
+const operators = ['+', '-', '*', '/', '^', '='];
 const isOperator = (e) => operators.includes(e);
 
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
+const sum = document.querySelector('.sum');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     buttonPressed = button.id;
-    console.log(buttonPressed);
     displayValue = populateDisplay(buttonPressed);
 
     if (isOperator(buttonPressed)) {
+      if (!numberFirst) {
+        numberFirst = +keys.slice(0, -1).join('');
+        len = 0;
+      } else {
+        numberSecond = +keys.slice(len, -1).join('');
+        sumValue = operate(operatorN, numberFirst, numberSecond);
+        numberFirst = sumValue;
+      }
       operatorN = buttonPressed;
-      numberFirst = +keys.slice(0, -1).join('');
+
+      sum.textContent = sumValue;
+
+      if (buttonPressed === '=') {
+        // numberFirst = sumValue;
+        numberSecond = 0;
+      }
     }
-
-    // if (key === '=') {
-    //   operate(operatorN, numberFirst, numberSecond);
-    // }
-
-    console.log('displayValue=', displayValue);
-    console.log('numb1 = ', numberFirst);
-    console.log('op =', operatorN);
   });
 });
 
@@ -38,12 +46,18 @@ function populateDisplay(key) {
   if (key === 'clear') {
     keys = [];
     i = 0;
+    len = 0;
     display.textContent = 0;
+    sum.textContent = 0;
+    numberFirst = 0;
+    numberSecond = 0;
   } else if (key === 'x') {
     display.textContent = keys.slice(0, -2).join('');
     i = i - 2;
+    len--;
   } else {
     display.textContent = keys.join('');
+    len++;
   }
 
   displayValue = display.textContent;
