@@ -5,7 +5,6 @@ let displayValue;
 let keys = [];
 let i = 0;
 let buttonPressed;
-let len = 0;
 let sumValue = 0;
 let firstExist = false;
 
@@ -32,6 +31,7 @@ buttons.forEach((button) => {
       firstExist = true;
     } else {
       if (isNumber(buttonPressed)) {
+        displayValue = populateDisplay(buttonPressed);
         if (firstExist === true) {
           numberSecond += buttonPressed;
         } else {
@@ -40,31 +40,33 @@ buttons.forEach((button) => {
       } else if (isOperator(buttonPressed)) {
         firstExist = true;
         operatorN = buttonPressed;
+        displayValue = populateDisplay(buttonPressed);
       }
-      displayValue = populateDisplay(buttonPressed);
+    }
+
+    if (buttonPressed === 'clear' || buttonPressed === 'x') {
+      populateDisplay(buttonPressed);
     }
   });
 });
 
 function populateDisplay(key) {
-  keys[i] = key;
-  i++;
-
-  // if (key === 'clear') {
-  //   keys = [];
-  //   i = 0;
-  //   len = 0;
-  //   display.textContent = 0;
-  //   sum.textContent = 0;
-  //   numberFirst = 0;
-  //   numberSecond = 0;
-  //   operatorN = undefined;
-  //   firstExist = false;
-  // } else if (key === 'x') {
-  //   display.textContent = keys.slice(0, -2).join('');
-  //   i = i - 2;
-  //   len--;
-  // }
+  if (key === 'clear') {
+    keys = [];
+    i = 0;
+    display.textContent = 0;
+    sum.textContent = 0;
+    numberFirst = '';
+    numberSecond = '';
+    operatorN = undefined;
+    firstExist = false;
+  } else if (key === 'x') {
+    keys.pop();
+    i--;
+  } else {
+    keys[i] = key;
+    i++;
+  }
   display.textContent = keys.join('');
   displayValue = display.textContent;
 
