@@ -20,14 +20,19 @@ const sum = document.querySelector('.sum');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     buttonPressed = button.id;
+    numberFirst = 0;
 
     if (buttonPressed === '=') {
       sumValue = operate(operatorN, numberFirst, numberSecond);
+
       sum.textContent = '=' + ' ' + sumValue;
-      console.log('sum = ', sumValue);
+
       displayValue = sumValue;
+
       numberSecond = 0;
+
       firstExist = true;
+
       keys = [];
       keys = String(sumValue).split('');
       len = keys.length;
@@ -56,24 +61,24 @@ function populateDisplay(key) {
   keys[i] = key;
   i++;
 
-  if (key === 'clear') {
-    keys = [];
-    i = 0;
-    len = 0;
-    display.textContent = 0;
-    sum.textContent = 0;
-    numberFirst = 0;
-    numberSecond = 0;
-    operatorN = undefined;
-    firstExist = false;
-  } else if (key === 'x') {
-    display.textContent = keys.slice(0, -2).join('');
-    i = i - 2;
-    len--;
-  } else {
-    display.textContent = keys.join('');
-  }
-
+  // if (key === 'clear') {
+  //   keys = [];
+  //   i = 0;
+  //   len = 0;
+  //   display.textContent = 0;
+  //   sum.textContent = 0;
+  //   numberFirst = 0;
+  //   numberSecond = 0;
+  //   operatorN = undefined;
+  //   firstExist = false;
+  // } else if (key === 'x') {
+  //   display.textContent = keys.slice(0, -2).join('');
+  //   i = i - 2;
+  //   len--;
+  // } else {
+  //   display.textContent = keys.join('');
+  // }
+  display.textContent = keys.join('');
   displayValue = display.textContent;
 
   return displayValue;
