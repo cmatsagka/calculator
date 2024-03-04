@@ -21,27 +21,33 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
     buttonPressed = button.id;
 
-    if (isNumber(buttonPressed)) {
-      displayValue = populateDisplay(buttonPressed);
-      if (firstExist === true) {
-        numberSecond = +keys.slice(len).join('');
-        console.log('second = ', numberSecond);
-      } else {
-        len++;
-      }
-    } else if (isOperator(buttonPressed)) {
-      numberFirst = +displayValue;
-      console.log('First = ', numberFirst);
-      firstExist = true;
-      len++;
-      operatorN = buttonPressed;
-      displayValue = populateDisplay(buttonPressed);
-    } else if (buttonPressed === '=') {
+    if (buttonPressed === '=') {
       sumValue = operate(operatorN, numberFirst, numberSecond);
       sum.textContent = '=' + ' ' + sumValue;
       console.log('sum = ', sumValue);
-      numberFirst = sumValue;
+      displayValue = sumValue;
       numberSecond = 0;
+      firstExist = true;
+      keys = [];
+      keys = String(sumValue).split('');
+      len = keys.length;
+      i = len;
+    } else {
+      if (isNumber(buttonPressed)) {
+        displayValue = populateDisplay(buttonPressed);
+        if (firstExist === true) {
+          numberSecond = +keys.slice(len).join('');
+        } else {
+          len++;
+        }
+      } else if (isOperator(buttonPressed)) {
+        numberFirst = +displayValue;
+        console.log('First = ', numberFirst);
+        firstExist = true;
+        len++;
+        operatorN = buttonPressed;
+        displayValue = populateDisplay(buttonPressed);
+      }
     }
   });
 });
