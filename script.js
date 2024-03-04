@@ -9,6 +9,9 @@ let sumValue = 0;
 const operators = ['+', '-', '*', '/', '^', '='];
 const isOperator = (e) => operators.includes(e);
 
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const isNumbers = (e) => numbers.includes(e);
+
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
 const sum = document.querySelector('.sum');
