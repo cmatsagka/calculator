@@ -5,12 +5,13 @@ let i = 0;
 let buttonPressed;
 let len = 0;
 let sumValue = 0;
+let firstExist = false;
 
-const operators = ['+', '-', '*', '/', '^', '='];
+const operators = ['+', '-', '*', '/', '^'];
 const isOperator = (e) => operators.includes(e);
 
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-const isNumbers = (e) => numbers.includes(e);
+const isNumber = (e) => numbers.includes(e);
 
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
@@ -19,31 +20,28 @@ const sum = document.querySelector('.sum');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     buttonPressed = button.id;
-    displayValue = populateDisplay(buttonPressed);
 
-    if (isOperator(buttonPressed)) {
-      if (!numberFirst) {
-        numberFirst = +keys.slice(0, -1).join('');
-        len = 0;
+    if (isNumber(buttonPressed)) {
+      displayValue = populateDisplay(buttonPressed);
+      if (firstExist === true) {
+        numberSecond = +keys.slice(len).join('');
+        console.log('second = ', numberSecond);
       } else {
-        numberSecond = +keys.slice(len, -1).join('');
-        sumValue = operate(operatorN, numberFirst, numberSecond);
-        numberFirst = sumValue;
+        len++;
       }
+    } else if (isOperator(buttonPressed)) {
+      numberFirst = +displayValue;
+      console.log('First = ', numberFirst);
+      firstExist = true;
+      len++;
       operatorN = buttonPressed;
-
-      sum.textContent = sumValue;
-
-      if (buttonPressed === '=') {
-        numberFirst = sumValue;
-        numberSecond = 0;
-        keys = [];
-        i = 0;
-        keys[i] = numberFirst;
-        display.textContent = sumValue;
-        displayValue = display.textContent;
-        operatorN = undefined;
-      }
+      displayValue = populateDisplay(buttonPressed);
+    } else if (buttonPressed === '=') {
+      sumValue = operate(operatorN, numberFirst, numberSecond);
+      sum.textContent = '=' + ' ' + sumValue;
+      console.log('sum = ', sumValue);
+      numberFirst = sumValue;
+      numberSecond = 0;
     }
   });
 });
@@ -61,13 +59,13 @@ function populateDisplay(key) {
     numberFirst = 0;
     numberSecond = 0;
     operatorN = undefined;
+    firstExist = false;
   } else if (key === 'x') {
     display.textContent = keys.slice(0, -2).join('');
     i = i - 2;
     len--;
   } else {
     display.textContent = keys.join('');
-    len++;
   }
 
   displayValue = display.textContent;
