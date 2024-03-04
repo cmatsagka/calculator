@@ -32,8 +32,14 @@ buttons.forEach((button) => {
       sum.textContent = sumValue;
 
       if (buttonPressed === '=') {
-        // numberFirst = sumValue;
+        numberFirst = sumValue;
         numberSecond = 0;
+        keys = [];
+        i = 0;
+        keys[i] = numberFirst;
+        display.textContent = sumValue;
+        displayValue = display.textContent;
+        operatorN = undefined;
       }
     }
   });
@@ -51,6 +57,7 @@ function populateDisplay(key) {
     sum.textContent = 0;
     numberFirst = 0;
     numberSecond = 0;
+    operatorN = undefined;
   } else if (key === 'x') {
     display.textContent = keys.slice(0, -2).join('');
     i = i - 2;
@@ -65,17 +72,17 @@ function populateDisplay(key) {
   return displayValue;
 }
 
-function operate(operator, numberA, numberB) {
+function operate(operator, a, b) {
   if (operator === '+') {
-    return add(numberA, numberB);
+    return add(a, b);
   } else if (operator === '-') {
-    return subtract(numberA, numberB);
+    return subtract(a, b);
   } else if (operator === '*') {
-    return multiply(numberA, numberB);
+    return multiply(a, b);
   } else if (operator === '/') {
-    return divide(numberA, numberB);
+    return divide(a, b);
   } else if (operator === '^') {
-    return power(numberA, numberB);
+    return power(a, b);
   }
 }
 
