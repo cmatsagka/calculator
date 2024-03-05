@@ -8,6 +8,7 @@ let buttonPressed;
 let sumValue = 0;
 let firstExist = false;
 let decimalAllowed = true;
+let precision = 8;
 
 const operators = ['+', '-', '*', '/', '^'];
 const isOperator = (e) => operators.includes(e);
@@ -29,7 +30,8 @@ buttons.forEach((button) => {
         alert('Insert numbers or operator!');
       } else {
         sumValue = operate(operatorN, +numberFirst, +numberSecond);
-        sum.textContent = '=' + ' ' + sumValue.toFixed(10);
+        sumValue = round(sumValue, precision);
+        sum.textContent = '=' + ' ' + sumValue;
 
         numberFirst = sumValue;
         numberSecond = 0;
@@ -70,6 +72,11 @@ buttons.forEach((button) => {
     }
   });
 });
+
+function round(value, precision) {
+  let multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+}
 
 function disableDecimal(decimalAllowed) {
   decimal.disabled = !decimalAllowed;
