@@ -29,7 +29,10 @@ buttons.forEach((button) => {
       if (!keys.length) {
         alert('Insert numbers or operator!');
       } else {
-        sumValue = operate(operatorN, +numberFirst, +numberSecond);
+        numberFirst = parseFloat(numberFirst);
+        numberSecond = parseFloat(numberSecond);
+
+        sumValue = operate(operatorN, numberFirst, numberSecond);
         sumValue = round(sumValue, precision);
         sum.textContent = '=' + ' ' + sumValue;
 
@@ -40,16 +43,14 @@ buttons.forEach((button) => {
     } else if (isNumber(buttonPressed)) {
       if (buttonPressed === 'dec') {
         if (decimalAllowed) {
-          console.log('pressed');
           displayValue = populateDisplay('.');
           if (firstExist === true) {
-            numberSecond += buttonPressed;
+            numberSecond += '.';
             decimalAllowed = !decimalAllowed;
           } else {
-            numberFirst += buttonPressed;
+            numberFirst += '.';
             decimalAllowed = !decimalAllowed;
           }
-
           disableDecimal(decimalAllowed);
         }
       } else {
