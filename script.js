@@ -86,7 +86,7 @@ function operate(operator, a, b) {
     return multiply(a, b);
   } else if (operator === '/') {
     if (b === 0) {
-      alert('Error! Division with 0!');
+      sum.textContent = '=' + ' ' + 'Error! Division with 0';
     } else {
       return divide(a, b);
     }
