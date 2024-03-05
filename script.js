@@ -13,7 +13,7 @@ let precision = 8;
 const operators = ['+', '-', '*', '/', '^'];
 const isOperator = (e) => operators.includes(e);
 
-const numbers = ['dec', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const numbers = ['.', 'dec', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const isNumber = (e) => numbers.includes(e);
 
 const display = document.querySelector('.display');
@@ -23,9 +23,10 @@ const decimal = document.getElementById('dec');
 
 document.addEventListener('keydown', (event) => {
   let keyBrd = event.key;
-  console.log(event.code);
+  let keyde = event.keyCode;
+  console.log(keyBrd);
 
-  if (keyBrd === '=') {
+  if (keyBrd === '=' || keyBrd === 'Enter') {
     if (!keys.length) {
       alert('Insert numbers or operator!');
     } else {
@@ -41,14 +42,14 @@ document.addEventListener('keydown', (event) => {
       firstExist = true;
     }
   } else if (isNumber(keyBrd)) {
-    if (keyBrd === 'NumpadDecimal') {
+    if (keyBrd === '.') {
       if (decimalAllowed) {
         displayValue = populateDisplay('.');
         if (firstExist === true) {
-          numberSecond += '.';
+          numberSecond += keyBrd;
           decimalAllowed = !decimalAllowed;
         } else {
-          numberFirst += '.';
+          numberFirst += keyBrd;
           decimalAllowed = !decimalAllowed;
         }
         disableDecimal(decimalAllowed);
