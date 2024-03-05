@@ -24,7 +24,6 @@ buttons.forEach((button) => {
 
     if (buttonPressed === '=') {
       if (!keys.length) {
-        console.log('Insert numbers or operator!');
         alert('Insert numbers or operator!');
       } else {
         sumValue = operate(operatorN, +numberFirst, +numberSecond);
@@ -86,7 +85,11 @@ function operate(operator, a, b) {
   } else if (operator === '*') {
     return multiply(a, b);
   } else if (operator === '/') {
-    return divide(a, b);
+    if (b === 0) {
+      alert('Error! Division with 0!');
+    } else {
+      return divide(a, b);
+    }
   } else if (operator === '^') {
     return power(a, b);
   }
