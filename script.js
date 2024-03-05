@@ -23,12 +23,17 @@ buttons.forEach((button) => {
     buttonPressed = button.id;
 
     if (buttonPressed === '=') {
-      sumValue = operate(operatorN, +numberFirst, +numberSecond);
-      sum.textContent = '=' + ' ' + sumValue;
+      if (!keys.length) {
+        console.log('Insert numbers or operator!');
+        alert('Insert numbers or operator!');
+      } else {
+        sumValue = operate(operatorN, +numberFirst, +numberSecond);
+        sum.textContent = '=' + ' ' + sumValue;
 
-      numberFirst = sumValue;
-      numberSecond = 0;
-      firstExist = true;
+        numberFirst = sumValue;
+        numberSecond = 0;
+        firstExist = true;
+      }
     } else {
       if (isNumber(buttonPressed)) {
         displayValue = populateDisplay(buttonPressed);
