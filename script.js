@@ -28,7 +28,7 @@ buttons.forEach((button) => {
         alert('Insert numbers or operator!');
       } else {
         sumValue = operate(operatorN, +numberFirst, +numberSecond);
-        sum.textContent = '=' + ' ' + sumValue;
+        sum.textContent = '=' + ' ' + sumValue.toFixed(10);
 
         numberFirst = sumValue;
         numberSecond = 0;
