@@ -21,6 +21,58 @@ const buttons = document.querySelectorAll('button');
 const sum = document.querySelector('.sum');
 const decimal = document.getElementById('dec');
 
+document.addEventListener('keydown', (event) => {
+  let keyBrd = event.key;
+  console.log(event.code);
+
+  if (keyBrd === '=') {
+    if (!keys.length) {
+      alert('Insert numbers or operator!');
+    } else {
+      numberFirst = parseFloat(numberFirst);
+      numberSecond = parseFloat(numberSecond);
+
+      sumValue = operate(operatorN, numberFirst, numberSecond);
+      sumValue = round(sumValue, precision);
+      sum.textContent = '=' + ' ' + sumValue;
+
+      numberFirst = sumValue;
+      numberSecond = 0;
+      firstExist = true;
+    }
+  } else if (isNumber(keyBrd)) {
+    if (keyBrd === 'NumpadDecimal') {
+      if (decimalAllowed) {
+        displayValue = populateDisplay('.');
+        if (firstExist === true) {
+          numberSecond += '.';
+          decimalAllowed = !decimalAllowed;
+        } else {
+          numberFirst += '.';
+          decimalAllowed = !decimalAllowed;
+        }
+        disableDecimal(decimalAllowed);
+      }
+    } else {
+      displayValue = populateDisplay(keyBrd);
+      if (firstExist === true) {
+        numberSecond += keyBrd;
+      } else {
+        numberFirst += keyBrd;
+      }
+    }
+  } else if (isOperator(keyBrd)) {
+    firstExist = true;
+    decimalAllowed = !decimalAllowed;
+    disableDecimal(decimalAllowed);
+    operatorN = keyBrd;
+    displayValue = populateDisplay(keyBrd);
+  }
+  if (keyBrd === 'clear' || keyBrd === 'Backspace') {
+    populateDisplay(keyBrd);
+  }
+});
+
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     buttonPressed = button.id;
@@ -68,7 +120,7 @@ buttons.forEach((button) => {
       operatorN = buttonPressed;
       displayValue = populateDisplay(buttonPressed);
     }
-    if (buttonPressed === 'clear' || buttonPressed === 'x') {
+    if (buttonPressed === 'clear' || buttonPressed === 'Backspace') {
       populateDisplay(buttonPressed);
     }
   });
@@ -95,7 +147,7 @@ function populateDisplay(key) {
     firstExist = false;
     decimalAllowed = true;
     disableDecimal(decimalAllowed);
-  } else if (key === 'x') {
+  } else if (key === 'Backspace') {
     if (keys[i - 1] === '.') {
       decimalAllowed = disableDecimal(!decimalAllowed);
     }
