@@ -23,8 +23,6 @@ const decimal = document.getElementById('dec');
 
 document.addEventListener('keydown', (event) => {
   let keyBrd = event.key;
-  let keyde = event.keyCode;
-  console.log(keyBrd);
 
   if (keyBrd === '=' || keyBrd === 'Enter') {
     if (!keys.length) {
