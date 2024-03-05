@@ -7,16 +7,18 @@ let i = 0;
 let buttonPressed;
 let sumValue = 0;
 let firstExist = false;
+let decimalAllowed = true;
 
 const operators = ['+', '-', '*', '/', '^'];
 const isOperator = (e) => operators.includes(e);
 
-const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const numbers = ['dec', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const isNumber = (e) => numbers.includes(e);
 
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
 const sum = document.querySelector('.sum');
+const decimal = document.getElementById('dec');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -33,26 +35,45 @@ buttons.forEach((button) => {
         numberSecond = 0;
         firstExist = true;
       }
-    } else {
-      if (isNumber(buttonPressed)) {
+    } else if (isNumber(buttonPressed)) {
+      if (buttonPressed === 'dec') {
+        if (decimalAllowed) {
+          console.log('pressed');
+          displayValue = populateDisplay('.');
+          if (firstExist === true) {
+            numberSecond += buttonPressed;
+            decimalAllowed = !decimalAllowed;
+          } else {
+            numberFirst += buttonPressed;
+            decimalAllowed = !decimalAllowed;
+          }
+
+          disableDecimal(decimalAllowed);
+        }
+      } else {
         displayValue = populateDisplay(buttonPressed);
         if (firstExist === true) {
           numberSecond += buttonPressed;
         } else {
           numberFirst += buttonPressed;
         }
-      } else if (isOperator(buttonPressed)) {
-        firstExist = true;
-        operatorN = buttonPressed;
-        displayValue = populateDisplay(buttonPressed);
       }
+    } else if (isOperator(buttonPressed)) {
+      firstExist = true;
+      decimalAllowed = !decimalAllowed;
+      disableDecimal(decimalAllowed);
+      operatorN = buttonPressed;
+      displayValue = populateDisplay(buttonPressed);
     }
-
     if (buttonPressed === 'clear' || buttonPressed === 'x') {
       populateDisplay(buttonPressed);
     }
   });
 });
+
+function disableDecimal(decimalAllowed) {
+  decimal.disabled = !decimalAllowed;
+}
 
 function populateDisplay(key) {
   if (key === 'clear') {
@@ -64,7 +85,12 @@ function populateDisplay(key) {
     numberSecond = '';
     operatorN = undefined;
     firstExist = false;
+    decimalAllowed = true;
+    disableDecimal(decimalAllowed);
   } else if (key === 'x') {
+    if (keys[i - 1] === '.') {
+      decimalAllowed = disableDecimal(!decimalAllowed);
+    }
     keys.pop();
     i--;
   } else {
