@@ -90,6 +90,7 @@ buttons.forEach((button) => {
         numberFirst = sumValue;
         numberSecond = 0;
         firstExist = true;
+        operatorN = undefined;
       }
     } else if (isNumber(buttonPressed)) {
       if (buttonPressed === 'dec') {
