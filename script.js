@@ -62,12 +62,12 @@ document.addEventListener('keydown', (event) => {
     }
   } else if (isOperator(keyBrd)) {
     firstExist = true;
-    decimalAllowed = !decimalAllowed;
+    decimalAllowed = true;
     disableDecimal(decimalAllowed);
     operatorN = keyBrd;
     displayValue = populateDisplay(keyBrd);
   }
-  if (keyBrd === 'clear' || keyBrd === 'Backspace') {
+  if (keyBrd === 'Delete' || keyBrd === 'Backspace') {
     populateDisplay(keyBrd);
   }
 });
@@ -114,12 +114,12 @@ buttons.forEach((button) => {
       }
     } else if (isOperator(buttonPressed)) {
       firstExist = true;
-      decimalAllowed = !decimalAllowed;
+      decimalAllowed = true;
       disableDecimal(decimalAllowed);
       operatorN = buttonPressed;
       displayValue = populateDisplay(buttonPressed);
     }
-    if (buttonPressed === 'clear' || buttonPressed === 'Backspace') {
+    if (buttonPressed === 'Delete' || buttonPressed === 'Backspace') {
       populateDisplay(buttonPressed);
     }
   });
@@ -135,7 +135,7 @@ function disableDecimal(decimalAllowed) {
 }
 
 function populateDisplay(key) {
-  if (key === 'clear') {
+  if (key === 'Delete') {
     keys = [];
     i = 0;
     display.textContent = 0;
