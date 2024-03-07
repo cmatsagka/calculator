@@ -73,30 +73,13 @@ picture, svg {
       --clr-dark: #1F2937;
       --clr-whiteA: #F9FAF8;
       --clr-whiteB: #E5E7EB;
-      --clr-lightblue: #3882F6;
-  
-  /* Size variables */
-      --sizes-s: 1.125rem; /*18px*/
-      --sizes-base: 1.5rem; /*24px*/
-      --sizes-l: 2.25rem; /*36px*/
-      --sizes-xl: 3rem; /*48px*/
-  
-  /* Font variables */
-      --font-weight-light: 300;
-      --font-weight-reg: 400;
-      --font-weight-extrabold: 900;
-  
-  }
+      --clr-lightblue: #3882F6;  
+}
 
 /* General Styling */
 
 *{
   margin: 0;
-  line-height: calc(1em + 0.5rem);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -118,34 +101,20 @@ button {
 }
 
 .container {
-  border: 3px solid green;
+  border: 10px solid green;
+  border-radius: 2.5%;
   background: #333;
   color: #fff;
   width: auto;
   margin: 0 auto;
   max-width: 15rem;
-}
-
-.wrapper {
-  width: auto;
-  margin: 0;
-  /* padding-block: 1rem; */
-  border: 3px solid blue;
-}
-
-#digits {
   display: flex;
+  gap: 1px;
   flex-wrap: wrap;
-  flex-direction: column-reverse;
-  gap: 0.5rem;
-}
-
-#digits > * {
-  flex: 1;
-  width: auto;
-  border: 1px solid yellow;
+  flex-direction: column;
 }
 
 #Delete {
   width: auto;
+  padding-inline: 1rem;
 }
