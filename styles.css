@@ -87,6 +87,7 @@ body {
   color: var(--clr-dark);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.25rem;
+  display: flex;
 }
 
 button {
@@ -105,8 +106,7 @@ button {
   border-radius: 2.5%;
   background: #333;
   color: #fff;
-  width: auto;
-  margin: 0 auto;
+  margin: auto;
   max-width: 15rem;
   display: flex;
   gap: 1px;
