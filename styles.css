@@ -108,38 +108,12 @@ button {
   color: #fff;
   margin: auto;
   max-width: 20rem;
-}
-
-.wrapper {
   display: flex;
-  gap: 1px;
-  flex-wrap: wrap;
   flex-direction: column;
-  padding: 0.5rem;
-  border: 3px solid red;
-  align-items: flex-end;
 }
 
-.column {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 2rem;
-  border: 3px solid blue;
-}
-
-.col {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  order: -1;
-  gap: 2px;
-  border: 3px solid yellow;
-  
-}
-
-.double {
-  flex-grow: 2;
+.section {
+  border: 3px solid white;
 }
 
 #Delete {
