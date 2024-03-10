@@ -92,7 +92,6 @@ body {
 
 button {
   display: inline-block;
-  padding: 0;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 7.5px;
@@ -102,18 +101,31 @@ button {
 }
 
 .container {
-  border: 10px solid green;
+  border: 8px solid green;
   border-radius: 2.5%;
   background: #333;
   color: #fff;
   margin: auto;
-  max-width: 20rem;
+  max-width: 13rem;
   display: flex;
   flex-direction: column;
 }
 
 .section {
-  border: 3px solid white;
+  padding: 5px;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.double {
+  width: auto;
+  padding-inline: 2.25rem;
 }
 
 #Delete {
