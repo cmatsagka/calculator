@@ -1,6 +1,6 @@
-let a = 0;
-let b = 0;
-let operator;
+let a = '';
+let b = '';
+let operator = '';
 let sum = 0;
 
 function add(a, b) {
@@ -68,12 +68,19 @@ btn.forEach(btn => {
                 calculation.textContent = display;
 
             }else if (digit == '='){
-                sum = operate(+a, +b, operator);
+                const numA = parseFloat(a);
+                const numB = parseFloat(b);
+
+                sum = operate(numA, numB, operator);
+
+                a = '';
+                b = '';
+                operator = '';
+                firstNumber = false;
                 console.log('sum = ', sum);
                 display = ' = ' + sum;
                 result.textContent = display;
                 display = '';
-                firstNumber = false;
                 sum = 0;
             }
         }
