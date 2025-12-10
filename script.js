@@ -30,3 +30,17 @@ function operate(a, b, operator){
             return divide(a, b);
         }
 }
+
+const calculation = document.querySelector('.calculation');
+let number1;
+const btn = document.querySelectorAll('button');
+
+btn.forEach(btn => {
+    btn.addEventListener('click', populateDisplay => {
+        console.log('Clicked');
+        calculation.textContent = btn.textContent;
+        number1 = btn.textContent;
+        console.log(number1);
+    });
+});
+
