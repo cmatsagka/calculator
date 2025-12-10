@@ -34,11 +34,24 @@ function operate(a, b, operator){
 const calculation = document.querySelector('.calculation');
 const btn = document.querySelectorAll('button');
 
+let number = calculation.textContent;
+
 btn.forEach(btn => {
     btn.addEventListener('click', populateDisplay => {
-        console.log('Clicked');
 
-        calculation.textContent = btn.textContent;
+        let digit = btn.textContent;
+
+        if (Number.isInteger(parseInt(digit))){
+            calculation.textContent = number.concat(digit);
+            number = calculation.textContent;
+        }else{
+            a = number;
+            number = 0;
+            if (digit == '+' || digit == '-' || digit == '*' || digit == '/'){
+                operator = digit;
+                console.log(operator);
+            }
+        }
     });
 });
 
