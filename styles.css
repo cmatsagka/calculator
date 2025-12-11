@@ -45,24 +45,33 @@ button {
     border: 2px solid rgb(201, 93, 93);
     padding: 24px;
     text-align: center;
-    width: 320px;
+    width: 360px;
     height: 480px;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 .btns {
     border: 2px solid rgb(201, 93, 93);
     display: flex;
+    flex-direction: row;
+    padding: 8px;
+    align-items: center;   
+    gap: 8px; 
+}
+
+.leftSide {
+    display: flex;
     flex-direction: column;
-    padding: 12px;
+    gap: 8px;
 }
 
 .delKeys {
     display: flex;
     flex-direction: row;
     border: 2px solid rgb(97, 194, 123);
-    padding: 12px;
+    /* padding: 12px; */
     gap: 8px;
 }
 
@@ -72,8 +81,9 @@ button {
     flex-direction: row;
     flex-wrap: wrap-reverse;
     margin: 0 auto;
-    padding: 24px;
+    /* padding: 24px; */
     gap: 8px;
+    justify-content: space-between;
 }
 
 .number0 {
@@ -82,8 +92,8 @@ button {
 
 .operators {
     display: flex;
-    padding: 12px;
+    /* padding: 12px; */
     gap: 8px;
     border: 2px solid rgb(97, 194, 123);
-
+    flex-direction: column-reverse;
 }
