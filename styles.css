@@ -47,4 +47,11 @@ button {
     text-align: center;
     width: 320px;
     height: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btns {
+    border: 2px solid rgb(201, 93, 93);
+    display: flex;
 }
