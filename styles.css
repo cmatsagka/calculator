@@ -72,8 +72,12 @@ button {
     flex-direction: row;
     flex-wrap: wrap-reverse;
     margin: 0 auto;
-    padding: 12px;
+    padding: 24px;
     gap: 8px;
+}
+
+.number0 {
+    flex: 1;
 }
 
 .operators {
