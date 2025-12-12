@@ -25,12 +25,14 @@ button {
     border-radius: 4px;
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(201, 93, 93);
+    flex: 1;
+    flex-basis: %;
 }
 
 .container {
     border: 2px solid rgb(201, 93, 93);
     padding: 24px;
-    text-align: center;
+    /* text-align: center; */
     width: 340px;
     height: 480px;
     display: flex;
@@ -47,7 +49,7 @@ button {
     margin-bottom: 24px;
     border: 2px solid rgb(201, 93, 93);
     color: rgb(201, 93, 93);
-
+    /* flex: 1; */
     font-size: 32px;
 }
 
@@ -55,9 +57,14 @@ button {
     border: 2px solid rgb(201, 93, 93);
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
     padding: 8px;
-    align-items: center;   
     gap: 8px; 
-    
     flex: 1;
+
+}
+
+.number0 {
+    flex: 2;
 }
