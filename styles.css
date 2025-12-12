@@ -27,19 +27,6 @@ button {
     border: 2px solid rgb(201, 93, 93);
 }
 
-.display {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    align-items: flex-end;
-    padding: 4px;
-    margin: 24px 24px;
-    border: 2px solid rgb(201, 93, 93);
-    color: rgb(201, 93, 93);
-
-    font-size: 32px;
-}
-
 .container {
     border: 2px solid rgb(201, 93, 93);
     padding: 24px;
@@ -51,20 +38,35 @@ button {
     margin: 0 auto;
 }
 
-.btns {
+.calcDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-end;
+    padding: 4px 8px;
+    margin-bottom: 24px;
+    border: 2px solid rgb(201, 93, 93);
+    color: rgb(201, 93, 93);
+
+    font-size: 32px;
+}
+
+.calcKeyboard {
     border: 2px solid rgb(201, 93, 93);
     display: flex;
     flex-direction: row;
     padding: 8px;
     align-items: center;   
     gap: 8px; 
-    justify-content: center;
+    
+    flex: 1;
 }
 
 .leftSide {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    border: 1px solid black;    
 }
 
 .delKeys {
@@ -77,8 +79,9 @@ button {
 .numbers {
     border: 2px solid rgb(97, 194, 123);
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    justify-content: center;
     gap: 8px;
 }
 
