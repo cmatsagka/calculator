@@ -61,33 +61,3 @@ button {
     
     flex: 1;
 }
-
-.leftSide {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border: 1px solid black;    
-}
-
-.delKeys {
-    display: flex;
-    flex-direction: row;
-    border: 2px solid rgb(97, 194, 123);
-    gap: 8px;
-}
-
-.numbers {
-    border: 2px solid rgb(97, 194, 123);
-    display: flex;
-    flex-wrap: wrap-reverse;
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-}
-
-.operators {
-    display: flex;
-    gap: 8px;
-    border: 2px solid rgb(97, 194, 123);
-    flex-direction: column-reverse;
-}
