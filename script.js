@@ -40,10 +40,10 @@ calculation.textContent = '';
 let display = calculation.textContent;
 let firstNumber = false;
 
-buttons.forEach(buttons => {
-    buttons.addEventListener('click', () => {
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
 
-        let digit = buttons.textContent;
+        let digit = button.textContent;
 
         if (Number.isInteger(parseInt(digit)) && !firstNumber){
 
