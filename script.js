@@ -34,12 +34,15 @@ function operate(a, b, operator){
 
 function populateDisplay(button){
     const value = button.textContent;
-    console.log('clicked', value);
-    buttonsClicked.push(value);
-    firstNumber = buttonsClicked.join('');
-    calculation.textContent = firstNumber;
-    console.log(buttonsClicked);
 
+    if (value == 'AC') {
+        buttonsClicked = [];
+        calculation.textContent = '0';
+    }else{
+        buttonsClicked.push(value);
+        firstNumber = buttonsClicked.join('');
+        calculation.textContent = firstNumber;
+    } 
 }
 
 const calculation = document.querySelector('.calculation');
