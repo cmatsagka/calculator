@@ -34,16 +34,16 @@ function operate(a, b, operator){
 
 const calculation = document.querySelector('.calculation');
 const result = document.querySelector('.result');
-const btn = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button');
 calculation.textContent = '';
 
 let display = calculation.textContent;
 let firstNumber = false;
 
-btn.forEach(btn => {
-    btn.addEventListener('click', () => {
+buttons.forEach(buttons => {
+    buttons.addEventListener('click', () => {
 
-        let digit = btn.textContent;
+        let digit = buttons.textContent;
 
         if (Number.isInteger(parseInt(digit)) && !firstNumber){
 
