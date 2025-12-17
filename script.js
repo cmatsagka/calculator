@@ -32,6 +32,10 @@ function operate(a, b, operator){
         }
 }
 
+function populateDisplay(){
+    
+}
+
 const calculation = document.querySelector('.calculation');
 const result = document.querySelector('.result');
 const buttons = document.querySelectorAll('button');
@@ -39,6 +43,12 @@ calculation.textContent = '';
 
 let display = calculation.textContent;
 let firstNumber = false;
+
+buttons.forEach(button =>
+    button.addEventListener('click', populateDisplay)
+    
+);
+
 
 /* 
 buttons.forEach(button => {
