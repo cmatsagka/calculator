@@ -57,6 +57,7 @@ function populateDisplay(button){
         numB = parseFloat(secondNumber);
         sum = operate(numA, numB, operator);
 
+        result.textContent = sum;
     }else{
         buttonsClicked.push(value);
         firstNumber = buttonsClicked.join('');
