@@ -41,7 +41,7 @@ let display = calculation.textContent;
 let firstNumber = false;
 
 btn.forEach(btn => {
-    btn.addEventListener('click', populateDisplay => {
+    btn.addEventListener('click', () => {
 
         let digit = btn.textContent;
 
