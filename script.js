@@ -35,15 +35,21 @@ function operate(a, b, operator){
 function populateDisplay(button){
     const value = button.textContent;
     console.log('clicked', value);
+    buttonsClicked.push(value);
+    firstNumber = buttonsClicked.join('');
+    calculation.textContent = firstNumber;
+    console.log(buttonsClicked);
+
 }
 
 const calculation = document.querySelector('.calculation');
 const result = document.querySelector('.result');
 const buttons = document.querySelectorAll('button');
-calculation.textContent = '';
 
-let display = calculation.textContent;
-let firstNumber = false;
+let buttonsClicked = [];
+let firstNumber;
+
+calculation.textContent = '0';
 
 buttons.forEach(button =>
     button.addEventListener('click', () => populateDisplay(button))
@@ -51,6 +57,8 @@ buttons.forEach(button =>
 
 
 /* 
+let display = calculation.textContent;
+let firstNumber = false;
 buttons.forEach(button => {
     button.addEventListener('click', () => {
 
