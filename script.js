@@ -32,8 +32,9 @@ function operate(a, b, operator){
         }
 }
 
-function populateDisplay(){
-    
+function populateDisplay(button){
+    const value = button.textContent;
+    console.log('clicked', value);
 }
 
 const calculation = document.querySelector('.calculation');
@@ -45,8 +46,7 @@ let display = calculation.textContent;
 let firstNumber = false;
 
 buttons.forEach(button =>
-    button.addEventListener('click', populateDisplay)
-    
+    button.addEventListener('click', () => populateDisplay(button))
 );
 
 
