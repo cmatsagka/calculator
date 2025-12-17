@@ -40,6 +40,7 @@ calculation.textContent = '';
 let display = calculation.textContent;
 let firstNumber = false;
 
+/* 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
 
@@ -86,4 +87,4 @@ buttons.forEach(button => {
         }
     });
 });
-
+ */
