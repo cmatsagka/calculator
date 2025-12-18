@@ -25,7 +25,6 @@ function populateDisplay(button){
     console.log('result ', result);
     console.log('-------------');
 
-
     expressionDiv.textContent = expression;
     resultDiv.textContent = result; 
 }
@@ -44,8 +43,11 @@ function addValue(value){
         operator = '';
         previousOperator = '';
     }else if (isOperator(value)){
+        if (isLastCharOperator()){
+            expression = expression.slice(0, -1);
+            operator = value;
+        }
         expression += value;
-        operator = value;
         operatorPosition = expression.length;
         result = operate(firstNumber, secondNumber, previousOperator);
         previousOperator = operator;
@@ -59,6 +61,10 @@ function addValue(value){
         firstNumber = parseFloat(expression);
         result = firstNumber;
     }
+}
+
+function isLastCharOperator(){
+    return isNaN(parseInt(expression.slice(-1)));
 }
 
 function isOperator(value){
