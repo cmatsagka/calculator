@@ -32,8 +32,7 @@ function populateDisplay(button){
 function addValue(value){
 
     if (value === 'AC'){
-        expression = '';
-        result = '';
+        clear();
     }else if (value == 'C'){
         backspace();
     }else if (value === '='){
@@ -45,9 +44,9 @@ function addValue(value){
     }else if (isOperator(value)){
         if (isLastCharOperator()){
             backspace();
-            operator = value;
         }
         expression += value;
+        operator = value;
         operatorPosition = expression.length;
         result = operate(firstNumber, secondNumber, previousOperator);
         previousOperator = operator;
@@ -61,6 +60,11 @@ function addValue(value){
         firstNumber = parseFloat(expression);
         result = firstNumber;
     }
+}
+
+function clear(){
+    expression = '';
+    result = '';
 }
 
 function backspace(){
