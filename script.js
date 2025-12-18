@@ -59,17 +59,23 @@ function doAction(button){
             backspace();
             break;
         case isOperator(value):
+            if (operator && secondNumber !== ''){
+                firstNumber = result;
+                secondNumber = '';
+            }
+
             isCalculated = false;
             operator = value;
             operatorPosition = expression.length;
+
             if (expression === '' && result !== '') {
-                expression += result + value;
+                expression = result + value;
+                firstNumber = result;
             } else if (expression !== '' && !isLastCharOperator()){
                 addValue(value);
             } else if (expression !== '' && isLastCharOperator()){
                 backspace();
                 addValue(value);
-                result = operate(firstNumber, secondNumber, operator);
             }
             break;
         case (value === '='):
