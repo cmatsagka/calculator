@@ -11,11 +11,12 @@ const resultDiv = document.querySelector('.result');
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => populateDisplay(button))
+    button.addEventListener('click', () => doAction(button))
 });
 
 function populateDisplay(button){
-    const value = button.textContent;
+    // const value = button.textContent;
+    // doAction(value);
     addValue(value);
     console.log('-------------');
     console.log('expression =', expression);
@@ -29,37 +30,57 @@ function populateDisplay(button){
     resultDiv.textContent = result; 
 }
 
+function doAction(button){
+    const value = button.textContent;
+
+    console.log(value);
+    switch (value) {
+        case 'AC':
+            clear();
+            break;
+        case 'C':
+            backspace();
+            break;
+        case isOperator(value):
+            console.log('isOperator', value);
+            break;
+        case '=':
+            console.log('equal');
+            break;  
+    }
+}
+
 function addValue(value){
 
-    if (value === 'AC'){
-        clear();
-    }else if (value == 'C'){
-        backspace();
-    }else if (value === '='){
-        result = operate(firstNumber, secondNumber, previousOperator);
-        firstNumber = result;
-        secondNumber = '';
-        operator = '';
-        previousOperator = '';
-    }else if (isOperator(value)){
-        if (isLastCharOperator()){
-            backspace();
-        }
-        expression += value;
-        operator = value;
-        operatorPosition = expression.length;
-        result = operate(firstNumber, secondNumber, previousOperator);
-        previousOperator = operator;
-        firstNumber = result;
-    }else if (firstNumber && operator){
-        expression += value;
-        secondNumber = expression.slice(operatorPosition);
-        secondNumber = parseFloat(secondNumber);
-    }else{
-        expression += value;
-        firstNumber = parseFloat(expression);
-        result = firstNumber;
-    }
+    // if (value === 'AC'){
+    //     clear();
+    // }else if (value == 'C'){
+    //     backspace();
+    // }else if (value === '='){
+    //     result = operate(firstNumber, secondNumber, previousOperator);
+    //     firstNumber = result;
+    //     secondNumber = '';
+    //     operator = '';
+    //     previousOperator = '';
+    // }else if (isOperator(value)){
+    //     if (isLastCharOperator()){
+    //         backspace();
+    //     }
+    //     expression += value;
+    //     operator = value;
+    //     operatorPosition = expression.length;
+    //     result = operate(firstNumber, secondNumber, previousOperator);
+    //     previousOperator = operator;
+    //     firstNumber = result;
+    // }else if (firstNumber && operator){
+    //     expression += value;
+    //     secondNumber = expression.slice(operatorPosition);
+    //     secondNumber = parseFloat(secondNumber);
+    // }else{
+    //     expression += value;
+    //     firstNumber = parseFloat(expression);
+    //     result = firstNumber;
+    // }
 }
 
 function clear(){
