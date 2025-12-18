@@ -14,17 +14,14 @@ buttons.forEach(button => {
     button.addEventListener('click', () => doAction(button))
 });
 
-function populateDisplay(button){
-    // const value = button.textContent;
-    // doAction(value);
-    addValue(value);
-    console.log('-------------');
-    console.log('expression =', expression);
-    console.log('firstNumber = ', firstNumber);
-    console.log('secondNumber =', secondNumber);
-    console.log('operator position ', operatorPosition);
-    console.log('result ', result);
-    console.log('-------------');
+function populateDisplay(expression, result){
+    // console.log('-------------');
+    // console.log('expression =', expression);
+    // console.log('firstNumber = ', firstNumber);
+    // console.log('secondNumber =', secondNumber);
+    // console.log('operator position ', operatorPosition);
+    // console.log('result ', result);
+    // console.log('-------------');
 
     expressionDiv.textContent = expression;
     resultDiv.textContent = result; 
@@ -34,24 +31,28 @@ function doAction(button){
     const value = button.textContent;
 
     console.log(value);
-    switch (value) {
-        case 'AC':
+    switch (true) {
+        case !Number.isNaN(parseFloat(value)):
+            addValue(value);
+            break;
+        case (value === 'AC'):
             clear();
             break;
-        case 'C':
+        case (value === 'C'):
             backspace();
             break;
         case isOperator(value):
-            console.log('isOperator', value);
             break;
-        case '=':
-            console.log('equal');
-            break;  
+        case (value === '='):
+            console.log('equal', value); 
     }
+
+
 }
 
 function addValue(value){
-
+    expression += value;
+}
     // if (value === 'AC'){
     //     clear();
     // }else if (value == 'C'){
@@ -81,7 +82,7 @@ function addValue(value){
     //     firstNumber = parseFloat(expression);
     //     result = firstNumber;
     // }
-}
+
 
 function clear(){
     expression = '';
@@ -97,7 +98,7 @@ function isLastCharOperator(){
 }
 
 function isOperator(value){
-    return (value == '+' || value == '-' || value == '*' || value == '/');
+    return (value === '+' || value === '-' || value === '*' || value === '/');
 }
 
 function add(a, b) {
