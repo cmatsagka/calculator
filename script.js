@@ -1,5 +1,5 @@
-let a = '';
-let b = '';
+let firstNumber = '';
+let secondNumber = '';
 let operator = '';
 let result = '';
 let expression = '';
@@ -15,7 +15,10 @@ buttons.forEach(button => {
 function populateDisplay(button){
     const value = button.textContent;
     addValue(value);
-    console.log(expression);
+    console.log('expression =', expression);
+    console.log('firstNumber = ', firstNumber);
+    console.log('secondNumber =', secondNumber);
+
     expressionDiv.textContent = expression;
     resultDiv.textContent = result; 
 }
@@ -27,6 +30,9 @@ function addValue(value){
     }else if (value == 'C'){
         expression = expression.slice(0, -1);
     }else if (isOperator(value)){
+        operator = value;
+        firstNumber = expression;
+        expression += value;
         console.log(value);
     }else{
         expression += value;
