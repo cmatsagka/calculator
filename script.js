@@ -78,32 +78,6 @@ function addValue(value){
 function startFromResult(value){
     expression += result + value;
 }
-    // }else if (value === '='){
-    //     result = operate(firstNumber, secondNumber, previousOperator);
-    //     firstNumber = result;
-    //     secondNumber = '';
-    //     operator = '';
-    //     previousOperator = '';
-    // }else if (isOperator(value)){
-    //     if (isLastCharOperator()){
-    //         backspace();
-    //     }
-    //     expression += value;
-    //     operator = value;
-    //     operatorPosition = expression.length;
-    //     result = operate(firstNumber, secondNumber, previousOperator);
-    //     previousOperator = operator;
-    //     firstNumber = result;
-    // }else if (firstNumber && operator){
-    //     expression += value;
-    //     secondNumber = expression.slice(operatorPosition);
-    //     secondNumber = parseFloat(secondNumber);
-    // }else{
-    //     expression += value;
-    //     firstNumber = parseFloat(expression);
-    //     result = firstNumber;
-    // }
-
 
 function clear(){
     expression = '';
