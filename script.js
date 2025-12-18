@@ -46,9 +46,17 @@ function doAction(button){
                 startFromResult(value);
             } else if (expression !== '' && !isLastCharOperator()){
                 addValue(value);
+            } else if (expression !== '' && isLastCharOperator()){
+                backspace();
+                addValue(value);
             }
             break;
         case (value === '='):
+            result = operate(firstNumber, secondNumber, previousOperator);
+            firstNumber = result;
+            secondNumber = '';
+            operator = '';
+            previousOperator = '';
             console.log('equal', value); 
     }
 
@@ -56,16 +64,13 @@ function doAction(button){
 }
 
 function addValue(value){
+
     expression += value;
 }
 
 function startFromResult(value){
     expression += result + value;
 }
-    // if (value === 'AC'){
-    //     clear();
-    // }else if (value == 'C'){
-    //     backspace();
     // }else if (value === '='){
     //     result = operate(firstNumber, secondNumber, previousOperator);
     //     firstNumber = result;
