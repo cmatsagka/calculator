@@ -67,7 +67,16 @@ function doAction(button){
             result = operate(firstNumber, secondNumber, operator);
             break;
         case (value === '.'):
-            addValue(value);
+            let currentNumber;
+            if (operator) {
+                currentNumber = expression;
+            }else{
+                currentNumber = expression.slice(operatorPosition + 1);
+            } 
+                
+            if (!currentNumber.includes('.')){
+                addValue(value);
+            }
     }
 
     populateDisplay(expression, result);
@@ -93,7 +102,7 @@ function isLastCharOperator(){
     return ['+', '-', '*', '/'].includes(expression.slice(-1));
 }
 
-function countDecimals(num) {
+function countDecimals(num){
     if (Number.isInteger(num) || typeof num !== 'number') {
         return 0;
     }
