@@ -21,6 +21,7 @@ function populateDisplay(button){
     console.log('firstNumber = ', firstNumber);
     console.log('secondNumber =', secondNumber);
     console.log('operator position ', operatorPosition);
+    console.log('result ', result);
 
 
     expressionDiv.textContent = expression;
@@ -37,10 +38,12 @@ function addValue(value){
     }else if (isOperator(value)){
         operator = value;
         if (!firstNumber) {
-            firstNumber = expression;
+            firstNumber = parseFloat(expression);
             operatorPosition = expression.length;
         }else {
-            secondNumber = expression.slice(operatorPosition+1);
+            secondNumber = expression.slice(operatorPosition + 1);
+            secondNumber = parseFloat(secondNumber);
+            result = operate(firstNumber, secondNumber, operator);
         }
         expression += value;
     }else{
