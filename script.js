@@ -27,7 +27,6 @@ function populateDisplay(expression, result){
 function doAction(button){
     const value = button.textContent;
 
-    console.log(value);
     switch (true) {
         case !Number.isNaN(parseFloat(value)):
             if (isCalculated) {
@@ -76,9 +75,9 @@ function doAction(button){
         case (value === '.'):
             let currentNumber;
             if (operator) {
-                currentNumber = expression;
-            }else{
                 currentNumber = expression.slice(operatorPosition + 1);
+            }else{
+                currentNumber = expression;
             } 
                 
             if (!currentNumber.includes('.')){
