@@ -47,7 +47,7 @@ function doAction(button){
             console.log('equal', value); 
     }
 
-
+    populateDisplay(expression, result);
 }
 
 function addValue(value){
