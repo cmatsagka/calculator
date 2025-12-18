@@ -4,7 +4,7 @@ let operator = '';
 let result = '';
 let expression = '';
 let operatorPosition;
-
+let previousOperator;
 
 const expressionDiv = document.querySelector('.expression');
 const resultDiv = document.querySelector('.result');
@@ -40,10 +40,11 @@ function addValue(value){
         if (!firstNumber) {
             firstNumber = parseFloat(expression);
             operatorPosition = expression.length;
+            previousOperator = value;
         }else {
             secondNumber = expression.slice(operatorPosition + 1);
             secondNumber = parseFloat(secondNumber);
-            result = operate(firstNumber, secondNumber, operator);
+            result = operate(firstNumber, secondNumber, previousOperator);
         }
         expression += value;
     }else{
