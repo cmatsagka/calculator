@@ -9,12 +9,18 @@ const resultDiv = document.querySelector('.result');
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => populateDisplay(expression, result))
+    button.addEventListener('click', () => populateDisplay(button))
 });
 
-function populateDisplay(){
+function populateDisplay(button){
+    const value = button.textContent;
+    addValue(value);
     expressionDiv.textContent += expression;
     resultDiv.textContent += result; 
+}
+
+function addValue(value){
+    expression += value;
 }
 
 function add(a, b) {
