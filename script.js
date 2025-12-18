@@ -42,6 +42,11 @@ function doAction(button){
             backspace();
             break;
         case isOperator(value):
+            if (expression === '' && result !== '') {
+                startFromResult(value);
+            } else if (expression !== '' && !isLastCharOperator()){
+                addValue(value);
+            }
             break;
         case (value === '='):
             console.log('equal', value); 
@@ -52,6 +57,10 @@ function doAction(button){
 
 function addValue(value){
     expression += value;
+}
+
+function startFromResult(value){
+    expression += result + value;
 }
     // if (value === 'AC'){
     //     clear();
