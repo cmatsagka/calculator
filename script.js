@@ -15,14 +15,6 @@ buttons.forEach(button => {
 });
 
 function populateDisplay(expression, result){
-    // console.log('-------------');
-    // console.log('expression =', expression);
-    // console.log('firstNumber = ', firstNumber);
-    // console.log('secondNumber =', secondNumber);
-    // console.log('operator position ', operatorPosition);
-    // console.log('result ', result);
-    // console.log('-------------');
-
     expressionDiv.textContent = expression;
     resultDiv.textContent = result; 
 }
@@ -76,10 +68,6 @@ function doAction(button){
 
 function addValue(value){
     expression += value;
-}
-
-function startFromResult(value){
-    expression += result + value;
 }
 
 function clear(){
