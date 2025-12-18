@@ -34,6 +34,11 @@ function doAction(button){
     switch (true) {
         case !Number.isNaN(parseFloat(value)):
             addValue(value);
+            if (operator){
+                secondNumber = expression.slice(operatorPosition + 1);;
+            }else {
+                firstNumber = expression;
+            }
             break;
         case (value === 'AC'):
             clear();
@@ -42,6 +47,8 @@ function doAction(button){
             backspace();
             break;
         case isOperator(value):
+            operator = value;
+            operatorPosition = expression.length;
             if (expression === '' && result !== '') {
                 startFromResult(value);
             } else if (expression !== '' && !isLastCharOperator()){
