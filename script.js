@@ -5,6 +5,7 @@ let result = '';
 let expression = '';
 let operatorPosition;
 let previousOperator;
+let isCalculated = false;
 
 const expressionDiv = document.querySelector('.expression');
 const resultDiv = document.querySelector('.result');
@@ -29,6 +30,10 @@ function doAction(button){
     console.log(value);
     switch (true) {
         case !Number.isNaN(parseFloat(value)):
+            if (isCalculated) {
+                clear();
+                isCalculated = false;
+            }
             addValue(value);
             if (result){
                 firstNumber = result;
@@ -65,6 +70,7 @@ function doAction(button){
             break;
         case (value === '='):
             result = operate(firstNumber, secondNumber, operator);
+            isCalculated = true;
             break;
         case (value === '.'):
             let currentNumber;
