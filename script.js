@@ -35,7 +35,7 @@ function doAction(button){
         case !Number.isNaN(parseFloat(value)):
             addValue(value);
             if (operator){
-                secondNumber = expression.slice(operatorPosition + 1);;
+                secondNumber = expression.slice(operatorPosition + 1);
             }else {
                 firstNumber = expression;
             }
@@ -59,19 +59,15 @@ function doAction(button){
             }
             break;
         case (value === '='):
-            result = operate(firstNumber, secondNumber, previousOperator);
-            firstNumber = result;
-            secondNumber = '';
-            operator = '';
-            previousOperator = '';
-            console.log('equal', value); 
+            firstNumber = parseFloat(firstNumber);
+            secondNumber = parseFloat(secondNumber);
+            result = operate(firstNumber, secondNumber, operator);
     }
 
     populateDisplay(expression, result);
 }
 
 function addValue(value){
-
     expression += value;
 }
 
@@ -82,6 +78,9 @@ function startFromResult(value){
 function clear(){
     expression = '';
     result = '';
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
 }
 
 function backspace(){
