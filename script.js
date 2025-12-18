@@ -37,6 +37,12 @@ function addValue(value){
         result = '';
     }else if (value == 'C'){
         expression = expression.slice(0, -1);
+    }else if (value === '='){
+        result = operate(firstNumber, secondNumber, previousOperator);
+        firstNumber = result;
+        secondNumber = '';
+        operator = '';
+        previousOperator = '';
     }else if (isOperator(value)){
         expression += value;
         operator = value;
