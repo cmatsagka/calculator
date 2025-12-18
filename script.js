@@ -9,8 +9,13 @@ const resultDiv = document.querySelector('.result');
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
-    button.addEventListener('click', populateDisplay())
+    button.addEventListener('click', () => populateDisplay(expression, result))
 });
+
+function populateDisplay(){
+    expressionDiv.textContent += expression;
+    resultDiv.textContent += result; 
+}
 
 function add(a, b) {
     return a + b;
