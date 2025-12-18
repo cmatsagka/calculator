@@ -23,7 +23,12 @@ function populateDisplay(expression, result){
     if (typeof result === 'number' && countDecimals(result) > 6) {
         displayResult = result.toFixed(6);
     }
-    resultDiv.textContent = displayResult; 
+
+    if (isCalculated && result !== ''){
+        resultDiv.textContent = '= ' + displayResult; 
+    }else{
+        resultDiv.textContent = displayResult; 
+    }
 }
 
 function doAction(button){
@@ -82,8 +87,10 @@ function doAction(button){
             }
             break;
         case (value === '='):
-            result = operate(firstNumber, secondNumber, operator);
-            isCalculated = true;
+            if (!isCalculated && operator && secondNumber !== ''){
+                result = operate(firstNumber, secondNumber, operator);
+                isCalculated = true;
+            }
             break;
         case (value === '.'):
             currentNumber;
