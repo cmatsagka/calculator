@@ -66,6 +66,6 @@ button {
     width: 48px;
 }
 
-.number0, .delete {
+.zero, .backspace {
     flex-basis: 104px;
 }
