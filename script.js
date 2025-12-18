@@ -35,7 +35,6 @@ function doAction(button){
             }
             addValue(value);
             if (result){
-                firstNumber = result;
                 secondNumber = expression.slice(operatorPosition + 1);
                 secondNumber = parseFloat(secondNumber);
                 result = operate(firstNumber, secondNumber, operator);
