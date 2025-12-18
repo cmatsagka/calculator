@@ -65,6 +65,29 @@ function doAction(button){
             break;
         case (value === 'C'):
             backspace();
+
+            if (expression === '') {
+                clear();
+            }else if (operator !== '' && expression.length <= operatorPosition) {
+                operator = '';
+                firstNumber = parseFloat(expression) || '';
+                result = firstNumber;
+            }else if (operator === '') {
+                firstNumber = parseFloat(expression) || '';
+                result = firstNumber;
+            }else if (isLastCharOperator()) {
+                result = firstNumber;
+                secondNumber = '';
+            }else {
+                currentNumber = expression.slice(operatorPosition + 1);
+                if (currentNumber !== '' && currentNumber !== '.') {
+                    secondNumber = parseFloat(currentNumber);
+                    result = operate(firstNumber, secondNumber, operator);
+                } else {
+                    secondNumber = '';
+                    result = firstNumber;
+                }
+            }
             break;
         case isOperator(value):
             if (operator && secondNumber !== ''){
@@ -74,17 +97,17 @@ function doAction(button){
 
             isCalculated = false;
             operator = value;
-            operatorPosition = expression.length;
-
+            
             if (expression === '' && result !== '') {
-                expression = result + value;
-                firstNumber = result;
-            } else if (expression !== '' && !isLastCharOperator()){
-                addValue(value);
-            } else if (expression !== '' && isLastCharOperator()){
-                backspace();
-                addValue(value);
-            }
+                    expression = result + value;
+                    firstNumber = result;
+                } else if (expression !== '' && !isLastCharOperator()){
+                        addValue(value);
+                    } else if (expression !== '' && isLastCharOperator()){
+                            backspace();
+                            addValue(value);
+                        }
+            operatorPosition = expression.length - 1;
             break;
         case (value === '='):
             if (!isCalculated && operator && secondNumber !== ''){
