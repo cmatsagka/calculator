@@ -94,9 +94,12 @@ function isLastCharOperator(){
 }
 
 function countDecimals(num) {
-    if (Number.isInteger(num)) return 0;
+    if (Number.isInteger(num) || typeof num !== 'number') {
+        return 0;
+    }
     const text = num.toString();
-    return text.split('.')[1].length;
+    const parts = text.split('.');
+    return parts.length > 1 ? parts[1].length : 0;
 }
 
 function isOperator(value){
