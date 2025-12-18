@@ -35,7 +35,7 @@ function addValue(value){
         expression = '';
         result = '';
     }else if (value == 'C'){
-        expression = expression.slice(0, -1);
+        backspace();
     }else if (value === '='){
         result = operate(firstNumber, secondNumber, previousOperator);
         firstNumber = result;
@@ -44,7 +44,7 @@ function addValue(value){
         previousOperator = '';
     }else if (isOperator(value)){
         if (isLastCharOperator()){
-            expression = expression.slice(0, -1);
+            backspace();
             operator = value;
         }
         expression += value;
@@ -61,6 +61,10 @@ function addValue(value){
         firstNumber = parseFloat(expression);
         result = firstNumber;
     }
+}
+
+function backspace(){
+    expression = expression.slice(0, -1);
 }
 
 function isLastCharOperator(){
