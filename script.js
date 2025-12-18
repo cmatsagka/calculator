@@ -17,11 +17,12 @@ buttons.forEach(button => {
 
 function populateDisplay(expression, result){
     expressionDiv.textContent = expression;
-    if (countDecimals(result) > 6) {
-        console.log("This number has a long decimal.");
-        result = result.toFixed(6);
+
+    let displayResult = result;
+    if (typeof result === 'number' && countDecimals(result) > 6) {
+        displayResult = result.toFixed(6);
     }
-    resultDiv.textContent = result; 
+    resultDiv.textContent = displayResult; 
 }
 
 function doAction(button){
