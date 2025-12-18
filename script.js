@@ -16,9 +16,9 @@ buttons.forEach(button => {
 
 function populateDisplay(expression, result){
     expressionDiv.textContent = expression;
-    if (countDecimals(result) > 9) {
+    if (countDecimals(result) > 6) {
         console.log("This number has a long decimal.");
-        result = result.toFixed(9);
+        result = result.toFixed(6);
     }
     resultDiv.textContent = result; 
 }
@@ -54,7 +54,7 @@ function doAction(button){
             operator = value;
             operatorPosition = expression.length;
             if (expression === '' && result !== '') {
-                startFromResult(value);
+                expression += result + value;
             } else if (expression !== '' && !isLastCharOperator()){
                 addValue(value);
             } else if (expression !== '' && isLastCharOperator()){
@@ -116,7 +116,11 @@ function multiply(a, b){
 }
 
 function divide(a, b){
-    return a / b;
+    if (b == 0) {
+        return 'Division by 0';
+    }else {
+        return a / b;
+    }
 }
 
 function operate(a, b, operator){
