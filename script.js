@@ -1,7 +1,16 @@
 let a = '';
 let b = '';
 let operator = '';
-let sum = 0;
+let result = '';
+let expression = '';
+
+const expressionDiv = document.querySelector('.expression');
+const resultDiv = document.querySelector('.result');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', populateDisplay())
+});
 
 function add(a, b) {
     return a + b;
