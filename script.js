@@ -201,6 +201,7 @@ window.addEventListener('keydown', (e) => {
     const btn = Array.from(buttons).find(keyPressed => keyPressed.textContent === e.key);
     
     if (e.key === 'Enter') {
+        e.preventDefault();
         doAction({ textContent: '=' });
     } else if (e.key === 'Backspace') {
         doAction({ textContent: 'C' });
