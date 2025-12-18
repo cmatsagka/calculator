@@ -3,6 +3,8 @@ let secondNumber = '';
 let operator = '';
 let result = '';
 let expression = '';
+let operatorPosition;
+
 
 const expressionDiv = document.querySelector('.expression');
 const resultDiv = document.querySelector('.result');
@@ -18,12 +20,15 @@ function populateDisplay(button){
     console.log('expression =', expression);
     console.log('firstNumber = ', firstNumber);
     console.log('secondNumber =', secondNumber);
+    console.log('operator position ', operatorPosition);
+
 
     expressionDiv.textContent = expression;
     resultDiv.textContent = result; 
 }
 
 function addValue(value){
+
     if (value === 'AC'){
         expression = '';
         result = '0';
@@ -31,9 +36,13 @@ function addValue(value){
         expression = expression.slice(0, -1);
     }else if (isOperator(value)){
         operator = value;
-        firstNumber = expression;
+        if (!firstNumber) {
+            firstNumber = expression;
+            operatorPosition = expression.length;
+        }else {
+            secondNumber = expression.slice(operatorPosition+1);
+        }
         expression += value;
-        console.log(value);
     }else{
         expression += value;
     }
