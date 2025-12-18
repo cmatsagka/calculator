@@ -38,12 +38,10 @@ function doAction(button){
                 clear();
                 isCalculated = false;
             }
+
             addValue(value);
-            if (result){
-                secondNumber = expression.slice(operatorPosition + 1);
-                secondNumber = parseFloat(secondNumber);
-                result = operate(firstNumber, secondNumber, operator);
-            }else if (operator){
+
+            if (operator){
                 secondNumber = expression.slice(operatorPosition + 1);
                 secondNumber = parseFloat(secondNumber);
                 result = operate(firstNumber, secondNumber, operator);
