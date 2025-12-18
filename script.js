@@ -16,6 +16,10 @@ buttons.forEach(button => {
 
 function populateDisplay(expression, result){
     expressionDiv.textContent = expression;
+    if (countDecimals(result) > 9) {
+        console.log("This number has a long decimal.");
+        result = result.toFixed(9);
+    }
     resultDiv.textContent = result; 
 }
 
@@ -87,6 +91,12 @@ function backspace(){
 
 function isLastCharOperator(){
     return isNaN(parseInt(expression.slice(-1)));
+}
+
+function countDecimals(num) {
+    if (Number.isInteger(num)) return 0;
+    const text = num.toString();
+    return text.split('.')[1].length;
 }
 
 function isOperator(value){
