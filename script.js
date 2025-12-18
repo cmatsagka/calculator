@@ -6,6 +6,7 @@ let expression = '';
 let operatorPosition;
 let previousOperator;
 let isCalculated = false;
+let currentNumber;
 
 const expressionDiv = document.querySelector('.expression');
 const resultDiv = document.querySelector('.result');
@@ -42,9 +43,13 @@ function doAction(button){
             addValue(value);
 
             if (operator){
-                secondNumber = expression.slice(operatorPosition + 1);
-                secondNumber = parseFloat(secondNumber);
-                result = operate(firstNumber, secondNumber, operator);
+                currentNumber = expression.slice(operatorPosition + 1);
+
+                if (currentNumber !== '' && currentNumber !== '.'){
+                    secondNumber = expression.slice(operatorPosition + 1);
+                    secondNumber = parseFloat(secondNumber);
+                    result = operate(firstNumber, secondNumber, operator);
+                }
             }else {
                 firstNumber = expression;
                 firstNumber = parseFloat(firstNumber);
@@ -81,7 +86,7 @@ function doAction(button){
             isCalculated = true;
             break;
         case (value === '.'):
-            let currentNumber;
+            currentNumber;
             if (operator) {
                 currentNumber = expression.slice(operatorPosition + 1);
             }else{
