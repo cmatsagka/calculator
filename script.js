@@ -90,7 +90,7 @@ function backspace(){
 }
 
 function isLastCharOperator(){
-    return isNaN(parseInt(expression.slice(-1)));
+    return ['+', '-', '*', '/'].includes(expression.slice(-1));
 }
 
 function countDecimals(num) {
