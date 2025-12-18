@@ -26,12 +26,16 @@ function addValue(value){
         result = '0';
     }else if (value == 'C'){
         expression = expression.slice(0, -1);
+    }else if (isOperator(value)){
+        console.log(value);
     }else{
         expression += value;
     }
 }
 
-
+function isOperator(value){
+    return (value == '=' || value == '+' || value == '-' || value == '*' || value == '/');
+}
 
 function add(a, b) {
     return a + b;
