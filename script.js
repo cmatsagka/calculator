@@ -34,7 +34,12 @@ function doAction(button){
     switch (true) {
         case !Number.isNaN(parseFloat(value)):
             addValue(value);
-            if (operator){
+            if (result){
+                firstNumber = result;
+                secondNumber = expression.slice(operatorPosition + 1);
+                secondNumber = parseFloat(secondNumber);
+                result = operate(firstNumber, secondNumber, operator);
+            }else if (operator){
                 secondNumber = expression.slice(operatorPosition + 1);
                 secondNumber = parseFloat(secondNumber);
                 result = operate(firstNumber, secondNumber, operator);
