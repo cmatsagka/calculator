@@ -15,6 +15,7 @@ buttons.forEach(button => {
 function populateDisplay(button){
     const value = button.textContent;
     addValue(value);
+    console.log(expression);
     expressionDiv.textContent = expression;
     resultDiv.textContent = result; 
 }
@@ -23,10 +24,11 @@ function addValue(value){
     if (value === 'AC'){
         expression = '';
         result = '0';
+    }else if (value == 'C'){
+        expression = expression.slice(0, -1);
     }else{
         expression += value;
     }
-    return expression;
 }
 
 
