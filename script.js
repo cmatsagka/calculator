@@ -28,6 +28,10 @@ function populateDisplay(expression, result){
 function doAction(button){
     const value = button.textContent;
 
+    if (result === 'Division by 0'){
+        clear();
+    }
+
     switch (true) {
         case !Number.isNaN(parseFloat(value)):
             if (isCalculated) {
