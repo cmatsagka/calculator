@@ -32,7 +32,7 @@ function addValue(value){
 
     if (value === 'AC'){
         expression = '';
-        result = '0';
+        result = '';
     }else if (value == 'C'){
         expression = expression.slice(0, -1);
     }else if (isOperator(value)){
@@ -41,12 +41,19 @@ function addValue(value){
             firstNumber = parseFloat(expression);
             operatorPosition = expression.length;
             previousOperator = value;
+            result = firstNumber;
         }else {
-            secondNumber = expression.slice(operatorPosition + 1);
-            secondNumber = parseFloat(secondNumber);
             result = operate(firstNumber, secondNumber, previousOperator);
+            previousOperator = operator;
+            secondNumber = '';
+            firstNumber = result;
         }
         expression += value;
+    }else if (firstNumber){
+        expression += value;
+        secondNumber = expression.slice(operatorPosition);
+        secondNumber = parseFloat(secondNumber);
+        console.log('second number', secondNumber);
     }else{
         expression += value;
     }
