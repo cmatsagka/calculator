@@ -36,8 +36,11 @@ function doAction(button){
             addValue(value);
             if (operator){
                 secondNumber = expression.slice(operatorPosition + 1);
+                secondNumber = parseFloat(secondNumber);
+                result = operate(firstNumber, secondNumber, operator);
             }else {
                 firstNumber = expression;
+                firstNumber = parseFloat(firstNumber);
             }
             break;
         case (value === 'AC'):
@@ -56,11 +59,10 @@ function doAction(button){
             } else if (expression !== '' && isLastCharOperator()){
                 backspace();
                 addValue(value);
+                result = operate(firstNumber, secondNumber, operator);
             }
             break;
         case (value === '='):
-            firstNumber = parseFloat(firstNumber);
-            secondNumber = parseFloat(secondNumber);
             result = operate(firstNumber, secondNumber, operator);
     }
 
