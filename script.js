@@ -167,4 +167,16 @@ function operate(a, b, operator){
         }
 }
 
-
+window.addEventListener('keydown', (e) => {
+    const btn = Array.from(buttons).find(keyPressed => keyPressed.textContent === e.key);
+    
+    if (e.key === 'Enter') {
+        doAction({ textContent: '=' });
+    } else if (e.key === 'Backspace') {
+        doAction({ textContent: 'C' });
+    } else if (e.key === 'Escape') {
+        doAction({ textContent: 'AC' });
+    }else if (btn) {
+        doAction(btn);
+    }
+});
