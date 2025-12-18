@@ -56,7 +56,7 @@ function addValue(value){
 }
 
 function isOperator(value){
-    return (value == '=' || value == '+' || value == '-' || value == '*' || value == '/');
+    return (value == '+' || value == '-' || value == '*' || value == '/');
 }
 
 function add(a, b) {
