@@ -61,6 +61,9 @@ function doAction(button){
             break;
         case (value === '='):
             result = operate(firstNumber, secondNumber, operator);
+            break;
+        case (value === '.'):
+            addValue(value);
     }
 
     populateDisplay(expression, result);
