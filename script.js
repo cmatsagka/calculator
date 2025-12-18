@@ -56,6 +56,7 @@ function doAction(button){
             backspace();
             break;
         case isOperator(value):
+            isCalculated = false;
             operator = value;
             operatorPosition = expression.length;
             if (expression === '' && result !== '') {
