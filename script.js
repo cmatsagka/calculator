@@ -17,11 +17,13 @@ buttons.forEach(button => {
 function populateDisplay(button){
     const value = button.textContent;
     addValue(value);
+    console.log('-------------');
     console.log('expression =', expression);
     console.log('firstNumber = ', firstNumber);
     console.log('secondNumber =', secondNumber);
     console.log('operator position ', operatorPosition);
     console.log('result ', result);
+    console.log('-------------');
 
 
     expressionDiv.textContent = expression;
@@ -36,26 +38,20 @@ function addValue(value){
     }else if (value == 'C'){
         expression = expression.slice(0, -1);
     }else if (isOperator(value)){
-        operator = value;
-        if (!firstNumber) {
-            firstNumber = parseFloat(expression);
-            operatorPosition = expression.length;
-            previousOperator = value;
-            result = firstNumber;
-        }else {
-            result = operate(firstNumber, secondNumber, previousOperator);
-            previousOperator = operator;
-            secondNumber = '';
-            firstNumber = result;
-        }
         expression += value;
-    }else if (firstNumber){
+        operator = value;
+        operatorPosition = expression.length;
+        result = operate(firstNumber, secondNumber, previousOperator);
+        previousOperator = operator;
+        firstNumber = result;
+    }else if (firstNumber && operator){
         expression += value;
         secondNumber = expression.slice(operatorPosition);
         secondNumber = parseFloat(secondNumber);
-        console.log('second number', secondNumber);
     }else{
         expression += value;
+        firstNumber = parseFloat(expression);
+        result = firstNumber;
     }
 }
 
