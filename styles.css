@@ -92,13 +92,13 @@ button {
     color: rgb(255, 255, 255);
 }
 
-button:active {
+button:hover {
+    background-color: rgb(201, 93, 93, 0.2);
+}
+
+button:active, button:hover:active {
     background-color: rgb(201, 93, 93);
     color: rgb(255, 255, 255);
     transform: translateY(2px);
     transition: 0.05s;
-}
-
-button:hover {
-    background-color: rgb(201, 93, 93, 0.1);
 }
