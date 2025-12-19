@@ -25,6 +25,8 @@ h1 {
     border-radius: 8px;
     padding: 24px;
     margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
 }
 
 .calcDisplay {
@@ -35,9 +37,21 @@ h1 {
     border: 2px solid rgb(201, 93, 93);
     border-radius: 6px;
     padding: 16px;
-    font-size: 2.8rem;
+    /* font-size: 2.8rem; */
     text-align: right;
-    min-height: 70px;
+    min-height: 100px;
+    width: 100%;
+    container-type: inline-size;
+}
+
+.result, .expression {
+    font-size: clamp(1.2rem, 15cqi, 3rem);
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.expression {
+    font-size: 2rem;
 }
 
 .calcKeyboard {
@@ -50,9 +64,6 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: space-between;
-    min-height: 232px;
-    width: 240px;
 }
 
 button {
@@ -62,10 +73,10 @@ button {
     color: rgb(201, 93, 93);
     text-align: center;
     font-size: 1.4rem;
-    height: 48px;
-    width: 48px;
+    height: 60px;
+    flex: 1 0 calc(25% - 8px);
 }
 
 .zero, .backspace {
-    flex-basis: 104px;
+    flex-basis: calc(50% - 8px);
 }
