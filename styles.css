@@ -85,3 +85,13 @@ button {
 .zero, .backspace {
     flex: 1 0 calc(50% - 8px);
 }
+
+button:active {
+    background-color: rgb(201, 93, 93);
+    color: rgb(255, 255, 255);
+    transform: scale(0.98);
+}
+
+button:hover {
+    background-color: rgb(201, 93, 93, 0.4);
+}
