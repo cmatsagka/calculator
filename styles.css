@@ -46,6 +46,11 @@ h1 {
     font-size: clamp(1.2rem, 15cqi, 3rem);
     white-space: nowrap;
     overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.result::-webkit-scrollbar {
+    display: none;
 }
 
 .expression {
