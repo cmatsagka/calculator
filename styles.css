@@ -81,6 +81,7 @@ button {
     font-size: 1.4rem;
     height: 60px;
     flex: 1 0 calc(25% - 8px);
+    transition: background-color 0.2s ease, transform 0.04s;
 }
 
 .zero, .backspace {
