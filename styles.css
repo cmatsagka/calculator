@@ -87,6 +87,11 @@ button {
     flex: 1 0 calc(50% - 8px);
 }
 
+.equal{
+    background-color: rgb(201, 93, 93);
+    color: rgb(255, 255, 255);
+}
+
 button:active {
     background-color: rgb(201, 93, 93);
     color: rgb(255, 255, 255);
@@ -95,5 +100,5 @@ button:active {
 }
 
 button:hover {
-    background-color: rgb(201, 93, 93, 0.4);
+    background-color: rgb(201, 93, 93, 0.1);
 }
