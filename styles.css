@@ -78,5 +78,5 @@ button {
 }
 
 .zero, .backspace {
-    flex-basis: calc(50% - 8px);
+    flex: 1 0 calc(50% - 8px);
 }
